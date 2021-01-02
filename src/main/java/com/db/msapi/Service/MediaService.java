@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.db.msapi.Mappers.OutputMapper;
 import com.db.msapi.Model.Media;
 import com.db.msapi.Model.Movie;
 import com.db.msapi.Model.MovieDetails;
@@ -16,6 +18,7 @@ import com.db.msapi.Repository.SeasonsRep;
 import com.db.msapi.Repository.ShowDetailsRep;
 import com.db.msapi.Repository.ShowRep;
 import com.db.msapi.externalApi.ExternalApi;
+import com.db.msapi.response.output.MediaOut;
 import com.db.msapi.util.LuceneSearch;
 
 @Service
@@ -35,7 +38,8 @@ public class MediaService {
 	private ExternalApi externalApi;
 	@Autowired
 	private LuceneSearch luceneSearch;
-
+	
+	
 
 	public List<Media> getAllMedia(){
 		List<Media> list = new ArrayList<Media>();
@@ -44,7 +48,6 @@ public class MediaService {
 	}
 	
 	public List<Media> searchAllMedia(String str){
-		
 		
 		if(!movieRep.existsByName(str)) {
 			for(Movie movie : externalApi.getMoviesList(str) ) {
@@ -72,40 +75,8 @@ public class MediaService {
 		}
 
 		return luceneSearch.getByName(str,5000, Media.class);
-
-		
 	}
 	
-	public List<Media> searchAllMediaTitleAndDesc(String str){
-		
-		if(!movieRep.existsByName(str)) {
-			for(Movie movie : externalApi.getMoviesList(str) ) {
-				if(!movieRep.existsByMdbId(movie.getMdbId())) {
-				MovieDetails movDet = externalApi.getMovieDetails(movie.getMdbId());		
-				movie.setMovieDetails(movDet);
-				movieRep.save(movie);
-				}
-			}
-		}
-		
-		if(!showRep.existsByName(str)) {
-			for(Show show : externalApi.getShowList(str) ) {
-				if(!showRep.existsByMdbId(show.getMdbId())) {
-				ShowDetails showDet = externalApi.getShowDetails(show.getMdbId());		
-				showDetailsRep.save(showDet);
-				for(ShowSeason season: showDet.getSeasons()) {
-					season.setShowDetails(showDet);
-					seasonRep.save(season);
-				}
-				show.setShowDetails(showDet);
-				showRep.save(show);
-				}
-			}
-		}
-		
-		return luceneSearch.getByNameOrDesc(str, 5000, Media.class);
-		
-	}
 	
 	
 }

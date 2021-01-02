@@ -28,8 +28,6 @@ public class LuceneSearch {
 		        .fetch(fetchNum); 
 
 		List<T> hits = result.hits();
-
-		
 		return hits.stream().distinct().collect(Collectors.toList());
 	}
 	
@@ -44,27 +42,9 @@ public class LuceneSearch {
 		        .fetch(fetchNum); 
 
 		List<T> hits = result.hits();
-
-	
 		return hits.stream().distinct().collect(Collectors.toList());
 	}
 	
-	public <T> List<T> getByNameOrDesc(String str, int fetchNum, Class<T> clazz){
-		SearchSession searchSession = Search.session( entityManager ); 
-		
-		List<T> hits = searchSession.search(clazz )
-		        .where( f -> f.bool()
-		                .should( f.match().field( "name" )
-		                        .matching( str ) ) 
-		                .should( f.match().field( "description" )
-		                        .matching( str) ) 
-		        )
-		        .fetchHits( fetchNum );
-	
-		entityManager.flush();
-
-		return hits.stream().distinct().collect(Collectors.toList());
-	}
 
 	
 	

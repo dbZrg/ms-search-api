@@ -20,13 +20,10 @@ public class MovieService {
 
 	@Autowired
 	private MovieRep movieRep;
-	
 	@Autowired
 	MovieDetailsRep movieDetailsRep;
-	
 	@Autowired
 	ExternalApi externalApi;
-	
 	@Autowired
 	private LuceneSearch luceneSearch;
 	
@@ -46,15 +43,12 @@ public class MovieService {
 				}
 			}
 		}
-		return luceneSearch.getByName(str, 5000, Movie.class);
-			
+		return luceneSearch.getByName(str, 5000, Movie.class);	
 	}
-	
-	
+
 	public Optional<Movie> getMovie(Long id){
 		return movieRep.findById(id);
 	}
-	
 	
 	public Optional<MovieDetails> getMovieDetails(Long id) {
 		return movieDetailsRep.findById(id);

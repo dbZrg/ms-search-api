@@ -13,8 +13,6 @@ public class MyLuceneAnalysisConfigurer implements LuceneAnalysisConfigurer {
                 .tokenizer( StandardTokenizerFactory.class ) 
                 .tokenFilter( LowerCaseFilterFactory.class ) 
                 .tokenFilter( ASCIIFoldingFilterFactory.class );
-
-      
     }
 }
 

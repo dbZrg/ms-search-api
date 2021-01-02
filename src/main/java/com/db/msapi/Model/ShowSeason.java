@@ -16,7 +16,7 @@ public class ShowSeason {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long seasonId;
-	private String seasonName;
+	private String name;
 	private String airDate;
 	private Integer episodeCount;
 	
@@ -27,9 +27,9 @@ public class ShowSeason {
 	public ShowSeason() {
 	}
 
-	public ShowSeason(String seasonName, String airDate, Integer episodeCount) {
+	public ShowSeason(String name, String airDate, Integer episodeCount) {
 		super();
-		this.seasonName = seasonName;
+		this.name = name;
 		this.airDate = airDate;
 		this.episodeCount = episodeCount;
 	}
@@ -42,12 +42,12 @@ public class ShowSeason {
 		this.showDetailsSes = showDetails;
 	}
 
-	public String getSeasonName() {
-		return seasonName;
+	public String getName() {
+		return name;
 	}
 
-	public void setSeasonName(String seasonName) {
-		this.seasonName = seasonName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getAirDate() {

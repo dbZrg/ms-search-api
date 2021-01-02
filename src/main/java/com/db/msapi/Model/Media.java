@@ -36,6 +36,8 @@ public abstract class Media {
 	private String language;
 	@GenericField
 	private Integer rating;
+	@Column(insertable=false, updatable=false)
+	private String media_type;
 	
 	protected Media() {
 	}
@@ -89,5 +91,11 @@ public abstract class Media {
 	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
+
+	public String getMedia_type() {
+		return media_type;
+	}
+
+
 	
 }

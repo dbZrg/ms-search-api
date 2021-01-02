@@ -36,14 +36,18 @@ public class MovieController {
 		return  movieService.getMoviesByName(str);
 	}
 		
-	@ApiOperation("Get movie by id")
-	@GetMapping("/movie/id/{id}")
-	public Optional<Movie> getMovie(@PathVariable Long id) {
+	@ApiOperation("Get movie by movie id")
+	@GetMapping("/movie/{id}")
+	public Optional<Movie> getMovie(@ApiParam(
+			value = "movie id",
+	        required = true)@PathVariable Long id) {
 		return movieService.getMovie(id);
 	}
-	@ApiOperation("Get movie details by id")
+	@ApiOperation("Get movie details by movie id")
 	@GetMapping("/movie/details/{id}")
-	public Optional<MovieDetails> getMovieDetails(@PathVariable Long id) {
+	public Optional<MovieDetails> getMovieDetails(@ApiParam(
+			value = "movie id",
+	        required = true)@PathVariable Long id) {
 		return movieService.getMovieDetails(id);
 	}
 }

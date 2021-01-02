@@ -22,13 +22,10 @@ public class ShowService {
 	private ShowRep showRep;
 	@Autowired
 	private ShowDetailsRep showDetailsRep;
-	
 	@Autowired
 	private SeasonsRep seasonRep;
-	
 	@Autowired
 	ExternalApi externalApi;
-	
 	@Autowired
 	private LuceneSearch luceneSearch;
 	
@@ -55,7 +52,6 @@ public class ShowService {
 			}
 		}	
 		return luceneSearch.getByName(str, 5000, Show.class);
-
 		}
 	
 	public Optional<Show> getShow(Long id){
