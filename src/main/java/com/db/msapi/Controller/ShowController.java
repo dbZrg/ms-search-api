@@ -28,7 +28,7 @@ public class ShowController {
 		return showService.getAllShows();
 	}
 	
-	@ApiOperation("Get tv shows by title")
+	@ApiOperation("Get tv shows by TITLE")
 	@GetMapping("/shows/{str}")
 	public List<Show> getShowsByName(@ApiParam(
 			value = "Title of tv show",
@@ -37,7 +37,7 @@ public class ShowController {
 		return showService.getShowsByName(str);
 	}
 	
-	@ApiOperation("Get tv show by id")
+	@ApiOperation("Get tv show by ID")
 	@GetMapping("/show/{id}")
 	public Optional<Show> getShow(@ApiParam(
 			value = "tv show id",
@@ -45,17 +45,17 @@ public class ShowController {
 		return showService.getShow(id);
 	}
 	
-	@ApiOperation("Get tv show details by tv show id")
+	@ApiOperation("Get tv show details by TV SHOW ID")
 	@GetMapping("/show/details/{id}")
-	public Optional<ShowDetails> getShowDetails(@ApiParam(
+	public ShowDetails getShowDetails(@ApiParam(
 			value = "tv show id",
 	        required = true)@PathVariable Long id) {
 		return showService.getShowDetails(id);
 	}
-	@ApiOperation("Get all seasons by tv show id")
+	@ApiOperation("Get all seasons by TV SHOW DETAILS ID")
 	@GetMapping("/show/seasons/{id}")
 	public List<ShowSeason> getShowSeason(@ApiParam(
-			value = "tv show id",
+			value = "tv show details id",
 	        required = true)@PathVariable Long id) {
 		return showService.getShowSeasons(id);
 	}

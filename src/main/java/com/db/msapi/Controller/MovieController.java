@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.db.msapi.Model.Movie;
 import com.db.msapi.Model.MovieDetails;
+import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.Service.MovieService;
 
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +28,7 @@ public class MovieController {
 		return movieService.getAllMovies();
 	}
 	
-	@ApiOperation("Get movies by title")
+	@ApiOperation("Get movies by TITLE")
 	@GetMapping("/movies/{str}")
 	public List<Movie> getMoviesByName(@ApiParam(
 			value = "Title of movie",
@@ -36,16 +37,16 @@ public class MovieController {
 		return  movieService.getMoviesByName(str);
 	}
 		
-	@ApiOperation("Get movie by movie id")
+	@ApiOperation("Get movie by ID")
 	@GetMapping("/movie/{id}")
 	public Optional<Movie> getMovie(@ApiParam(
 			value = "movie id",
 	        required = true)@PathVariable Long id) {
 		return movieService.getMovie(id);
 	}
-	@ApiOperation("Get movie details by movie id")
+	@ApiOperation("Get movie details by MOVIE ID")
 	@GetMapping("/movie/details/{id}")
-	public Optional<MovieDetails> getMovieDetails(@ApiParam(
+	public MovieDetails getMovieDetails(@ApiParam(
 			value = "movie id",
 	        required = true)@PathVariable Long id) {
 		return movieService.getMovieDetails(id);

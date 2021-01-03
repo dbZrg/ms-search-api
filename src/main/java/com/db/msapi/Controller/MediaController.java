@@ -32,7 +32,7 @@ public class MediaController {
 	public List<MediaOut> getAllMoviesAndShows() {
 		return outMapper.toMediaOutList(mediaService.getAllMedia());
 	}
-	@ApiOperation("Get movies and tv shows by title")
+	@ApiOperation("Get movies and tv shows by TITLE")
 	@GetMapping("/all/{str}")
 	public List<MediaOut> searchAllMoviesAndShows(@ApiParam(
 			value = "Title of move or TV show",

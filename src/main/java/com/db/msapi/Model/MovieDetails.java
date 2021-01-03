@@ -1,10 +1,14 @@
+
+
 package com.db.msapi.Model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,11 +21,14 @@ public class MovieDetails {
 	private String imdbId;
     private Long revenue;
     private String releaseDate;
-	@Column(length=1024)
+	@Column(length=2048)
     private String writer;
-	@Column(length=1024)
+	@Column(length=2048)
     private String director;
     private String genres;
+    
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "movieDetails")
+    private Movie movie;
 
     public MovieDetails() {	
     }

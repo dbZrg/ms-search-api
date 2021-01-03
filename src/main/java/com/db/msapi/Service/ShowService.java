@@ -58,8 +58,8 @@ public class ShowService {
 		return showRep.findById(id);
 	}
 	
-	public Optional<ShowDetails> getShowDetails(Long id) {
-		return showDetailsRep.findById(id);
+	public ShowDetails getShowDetails(Long id) {
+		return showDetailsRep.findByShow_id(id);
 	}
 	
 	public List<ShowSeason> getShowSeasons(Long id){

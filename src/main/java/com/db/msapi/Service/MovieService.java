@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.db.msapi.Model.Movie;
 import com.db.msapi.Model.MovieDetails;
+import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.Repository.MovieDetailsRep;
 import com.db.msapi.Repository.MovieRep;
 import com.db.msapi.externalApi.ExternalApi;
@@ -50,8 +51,8 @@ public class MovieService {
 		return movieRep.findById(id);
 	}
 	
-	public Optional<MovieDetails> getMovieDetails(Long id) {
-		return movieDetailsRep.findById(id);
+	public MovieDetails getMovieDetails(Long id) {
+		return movieDetailsRep.findByMovie_id(id);
 	}
 	
 }
