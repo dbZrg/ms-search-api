@@ -26,9 +26,9 @@ public class ShowDetails {
 	private String firstAirDate;
 	private String lastAirDate;
 	private int numOfSeasons;
+	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "showDetails")
     private Show show;
-	
 	
 	@OneToMany(mappedBy = "showDetailsSes", fetch = FetchType.LAZY)
 	private List<ShowSeason> seasons = new ArrayList<>();
@@ -36,7 +36,6 @@ public class ShowDetails {
 	public ShowDetails() {
 	}
 	
-
 	public ShowDetails(String imdbId, String firstAirDate, String lastAirDate, int numOfSeasons,
 			List<ShowSeason> seasons) {
 		super();

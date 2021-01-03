@@ -30,6 +30,7 @@ public class MediaController {
 	@ApiOperation("Get all movies and tv shows")
 	@GetMapping("/all/")
 	public List<MediaOut> getAllMoviesAndShows() {
+		
 		List<MediaOut> output = outMapper.toMediaOutList(mediaService.getAllMedia());
 		for (MediaOut media : output) {
 			if(media.getMedia_type().equals("movie")) {

@@ -59,6 +59,7 @@ public class MovieController {
 	public Optional<Movie> getMovie(@ApiParam(
 			value = "movie id",
 	        required = true)@PathVariable Long id) {
+		
 		return movieService.getMovie(id);
 	}
 	@ApiOperation("Get movie details by MOVIE ID")
@@ -66,6 +67,7 @@ public class MovieController {
 	public MovieDetails getMovieDetails(@ApiParam(
 			value = "movie id",
 	        required = true)@PathVariable Long id) {
+		
 		return movieService.getMovieDetails(id);
 	}
 }

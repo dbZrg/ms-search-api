@@ -39,7 +39,6 @@ public class ExternalApi {
 		MovieResponseOmdb responseOpenMovieDatabase = new MovieResponseOmdb();
 		
 		MovieDetailsResponse responseTheMovieDatabase = theMoviedbApi.getMovieDetailsResponse(id);
-		
 		if(responseTheMovieDatabase != null) {
 			responseOpenMovieDatabase = openMoviedbApi.getMovieResponse(responseTheMovieDatabase.imdbId);
 		}

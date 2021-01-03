@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Sun Jan 03 21:19:06 CET 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0176-c9e7-4439-000008bed620 
-on database directory memory:D:\Eclipse-workspace\ms-search-api\2b29a633-11db-4ae2-b922-cd61d65f9929 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@77556fd 
+Sun Jan 03 21:45:00 CET 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0176-c9fe-fbd5-00000d0bbb40 
+on database directory memory:D:\Eclipse-workspace\ms-search-api\03904e83-11e6-450a-8a06-d5c2d6d35857 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
 Loaded from file:/C:/Users/Hal/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=11.0.9+7-LTS
@@ -11,6 +11,3 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Sun Jan 03 21:23:35 CET 2021:
-Shutting down instance a816c00e-0176-c9e7-4439-000008bed620 on database directory memory:D:\Eclipse-workspace\ms-search-api\2b29a633-11db-4ae2-b922-cd61d65f9929 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@77556fd 

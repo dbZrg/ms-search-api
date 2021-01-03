@@ -46,6 +46,7 @@ public class ShowController {
 			value = "Title of tv show",
 	        required = true, 
 	        defaultValue = "Curb Your Enthusiasm")@PathVariable String str){
+		
 		List<MediaOut> output = outMapper.toMediaOutListS(showService.getShowsByName(str));
 		for (MediaOut media : output) {
 			 media.add(linkTo(ShowController.class).slash("/show").slash(media.getId()).withSelfRel());
@@ -59,6 +60,7 @@ public class ShowController {
 	public Optional<Show> getShow(@ApiParam(
 			value = "tv show id",
 	        required = true)@PathVariable Long id) {
+		
 		return showService.getShow(id);
 	}
 	
@@ -67,6 +69,7 @@ public class ShowController {
 	public ShowDetails getShowDetails(@ApiParam(
 			value = "tv show id",
 	        required = true)@PathVariable Long id) {
+		
 		return showService.getShowDetails(id);
 	}
 	@ApiOperation("Get all seasons by TV SHOW DETAILS ID")
@@ -74,6 +77,7 @@ public class ShowController {
 	public List<ShowSeason> getShowSeason(@ApiParam(
 			value = "tv show details id",
 	        required = true)@PathVariable Long id) {
+		
 		return showService.getShowSeasons(id);
 	}
 }

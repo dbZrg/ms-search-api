@@ -13,7 +13,6 @@ public interface MediaRep extends CrudRepository<Media, Long> {
 	
 	List<Media> findByName(@Param("name") String name);
 	List<Media> findByNameContainingIgnoreCase(@Param("name")String name);
-	List<Media> findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(@Param("name")String name,@Param("description")String description);
 	boolean existsByName(@Param("name")String name);
 	
 }
