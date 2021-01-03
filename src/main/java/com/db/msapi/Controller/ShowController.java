@@ -1,5 +1,8 @@
 package com.db.msapi.Controller;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -8,33 +11,47 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.db.msapi.Mappers.OutputMapper;
 import com.db.msapi.Model.Show;
 import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.Model.ShowSeason;
 import com.db.msapi.Service.ShowService;
+import com.db.msapi.response.output.MediaOut;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
 public class ShowController {
-	
+	@Autowired
+	private OutputMapper outMapper;
 	@Autowired
 	private ShowService showService;
 	
 	@ApiOperation("Get all tv shows")
 	@GetMapping("/shows/")
-	public List<Show> getAllShows() {
-		return showService.getAllShows();
+	public List<MediaOut> getAllShows() {
+		
+		List<MediaOut> output = outMapper.toMediaOutListS(showService.getAllShows());
+		for (MediaOut media : output) {
+			 media.add(linkTo(ShowController.class).slash("/show").slash(media.getId()).withSelfRel());
+			 media.add(linkTo(methodOn(ShowController.class).getShowDetails(media.getId())).withRel("show details"));				
+		}
+		return output;
 	}
 	
 	@ApiOperation("Get tv shows by TITLE")
 	@GetMapping("/shows/{str}")
-	public List<Show> getShowsByName(@ApiParam(
+	public List<MediaOut> getShowsByName(@ApiParam(
 			value = "Title of tv show",
 	        required = true, 
-	        defaultValue = "The Office")@PathVariable String str){
-		return showService.getShowsByName(str);
+	        defaultValue = "Curb Your Enthusiasm")@PathVariable String str){
+		List<MediaOut> output = outMapper.toMediaOutListS(showService.getShowsByName(str));
+		for (MediaOut media : output) {
+			 media.add(linkTo(ShowController.class).slash("/show").slash(media.getId()).withSelfRel());
+			 media.add(linkTo(methodOn(ShowController.class).getShowDetails(media.getId())).withRel("show details"));				
+		}
+		return output;
 	}
 	
 	@ApiOperation("Get tv show by ID")

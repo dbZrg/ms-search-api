@@ -36,8 +36,6 @@ public class ShowDetails {
 	public ShowDetails() {
 	}
 	
-	
-	
 
 	public ShowDetails(String imdbId, String firstAirDate, String lastAirDate, int numOfSeasons,
 			List<ShowSeason> seasons) {
@@ -50,8 +48,6 @@ public class ShowDetails {
 	}
 
 
-
-
 	public Long getIdSDetails() {
 		return idSDetails;
 	}
@@ -59,22 +55,14 @@ public class ShowDetails {
 	public List<ShowSeason> getSeasons() {
 		return seasons;
 	}
-	
-	
 
 	public String getImdbId() {
 		return imdbId;
 	}
 
-
-
-
 	public void setImdbId(String imdbId) {
 		this.imdbId = imdbId;
 	}
-
-
-
 
 	public void setSeasons(List<ShowSeason> seasons) {
 		this.seasons = seasons;

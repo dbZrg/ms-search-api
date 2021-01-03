@@ -1,15 +1,16 @@
 package com.db.msapi.response.output;
 
+import org.springframework.hateoas.RepresentationModel;
 
-public class MediaOut {
-
+public class MediaOut extends RepresentationModel<MediaOut> {
+	
+	private String name;
+	
 	private long id;
 	
 	private long mdbId;
 	
 	private String media_type;
-
-	private String name;
 	
 	private String description;
 	
@@ -22,10 +23,10 @@ public class MediaOut {
 	public MediaOut(long id, long mdbId, String media_type, String name, String description, String image_path,
 			String language, Integer rating) {
 		super();
+		this.name = name;
 		this.id = id;
 		this.mdbId = mdbId;
 		this.media_type = media_type;
-		this.name = name;
 		this.description = description;
 		this.image_path = image_path;
 		this.language = language;

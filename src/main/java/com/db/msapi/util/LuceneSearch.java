@@ -20,9 +20,10 @@ public class LuceneSearch {
 	private EntityManager entityManager;
 	
 	public <T> List<T> getAll(int fetchNum, Class<T> clazz){
-		entityManager.flush();
+	
+		entityManager.clear();
 		SearchSession searchSession = Search.session( entityManager ); 
-
+		
 		SearchResult<T> result = searchSession.search(clazz) 
 		        .where( f -> f.matchAll())
 		        .fetch(fetchNum); 
@@ -32,7 +33,8 @@ public class LuceneSearch {
 	}
 	
 	public <T> List<T> getByName(String str, int fetchNum, Class<T> clazz){
-		entityManager.flush();
+		
+		entityManager.clear();
 		SearchSession searchSession = Search.session( entityManager ); 
 
 		SearchResult<T> result = searchSession.search(clazz) 
