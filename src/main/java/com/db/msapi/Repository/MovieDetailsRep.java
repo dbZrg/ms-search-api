@@ -6,7 +6,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.db.msapi.Model.MovieDetails;
-import com.db.msapi.Model.ShowDetails;
 
 @Repository
 public interface MovieDetailsRep extends CrudRepository<MovieDetails,Long> {

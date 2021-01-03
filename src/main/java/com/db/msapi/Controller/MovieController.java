@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.db.msapi.Mappers.OutputMapper;
 import com.db.msapi.Model.Movie;
 import com.db.msapi.Model.MovieDetails;
-import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.Service.MovieService;
 import com.db.msapi.response.output.MediaOut;
 

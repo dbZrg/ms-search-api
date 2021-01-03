@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.db.msapi.Mappers.OutputMapper;
 import com.db.msapi.Model.Media;
 import com.db.msapi.Model.Movie;
 import com.db.msapi.Model.MovieDetails;
@@ -18,7 +17,6 @@ import com.db.msapi.Repository.SeasonsRep;
 import com.db.msapi.Repository.ShowDetailsRep;
 import com.db.msapi.Repository.ShowRep;
 import com.db.msapi.externalApi.ExternalApi;
-import com.db.msapi.response.output.MediaOut;
 import com.db.msapi.util.LuceneSearch;
 
 @Service

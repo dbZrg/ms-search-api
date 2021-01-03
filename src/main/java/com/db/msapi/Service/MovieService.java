@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.db.msapi.Model.Movie;
 import com.db.msapi.Model.MovieDetails;
-import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.Repository.MovieDetailsRep;
 import com.db.msapi.Repository.MovieRep;
 import com.db.msapi.externalApi.ExternalApi;
