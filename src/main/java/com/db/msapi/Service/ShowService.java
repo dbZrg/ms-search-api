@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.db.msapi.Model.Movie;
-import com.db.msapi.Model.MovieDetails;
 import com.db.msapi.Model.Show;
 import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.Model.ShowSeason;

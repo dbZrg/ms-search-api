@@ -3,7 +3,6 @@ package com.db.msapi.Controller;
 
 import java.util.List;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,8 @@ import com.db.msapi.response.output.MediaOut;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import springfox.documentation.annotations.ApiIgnore;
+
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @Validated
@@ -28,6 +29,12 @@ public class MediaController {
 	private OutputMapper outMapper;
 	@Autowired
 	private MediaService mediaService;
+	
+	@ApiIgnore
+	@GetMapping("/")
+	public String message() {
+		return "Api documentation -->  http://localhost:8080/swagger-ui/ ";
+	}
 	
 	@ApiOperation("Get all movies and tv shows")
 	@GetMapping("/all/")
