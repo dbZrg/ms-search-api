@@ -5,8 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.db.msapi.Model.Movie;
 import com.db.msapi.Model.MovieDetails;
@@ -47,11 +48,15 @@ public class MovieService {
 	}
 
 	public Optional<Movie> getMovie(Long id){
-		return movieRep.findById(id);
+		Optional<Movie> movie = movieRep.findById(id);
+		if(movie.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Movie found");
+		return movie;
 	}
 	
 	public MovieDetails getMovieDetails(Long id) {
-		return movieDetailsRep.findByMovie_id(id);
+		MovieDetails movDet = movieDetailsRep.findByMovie_id(id);
+		if(movDet == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Movie details found");
+		return movDet;
 	}
 	
 }

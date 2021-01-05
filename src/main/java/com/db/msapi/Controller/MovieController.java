@@ -6,7 +6,12 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +24,7 @@ import com.db.msapi.response.output.MediaOut;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-
+@Validated
 @RestController
 public class MovieController {
 	@Autowired
@@ -32,6 +37,7 @@ public class MovieController {
 	public List<MediaOut> getAll() {
 		
 		List<MediaOut> output = outMapper.toMediaOutListM(movieService.getAllMovies());
+		
 		for (MediaOut media : output) {
 			 media.add(linkTo(MovieController.class).slash("/movie").slash(media.getId()).withSelfRel());
 			 media.add(linkTo(methodOn(MovieController.class).getMovieDetails(media.getId())).withRel("movie details"));				
@@ -44,9 +50,10 @@ public class MovieController {
 	public List<MediaOut> getMoviesByName(@ApiParam(
 			value = "Title of movie",
 	        required = true, 
-	        defaultValue = "The Truman Show")@PathVariable String str) {
+	        defaultValue = "The Truman Show")@PathVariable @Size(min=3,max=35) String str) {
 		
 		List<MediaOut> output = outMapper.toMediaOutListM(movieService.getMoviesByName(str));
+		
 		for (MediaOut media : output) {
 			 media.add(linkTo(MovieController.class).slash("/movie").slash(media.getId()).withSelfRel());
 			 media.add(linkTo(methodOn(MovieController.class).getMovieDetails(media.getId())).withRel("movie details"));				

@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Sun Jan 03 21:45:00 CET 2021:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0176-c9fe-fbd5-00000d0bbb40 
-on database directory memory:D:\Eclipse-workspace\ms-search-api\03904e83-11e6-450a-8a06-d5c2d6d35857 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2cdf8d8a 
+Tue Jan 05 20:14:31 CET 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0176-d3f8-dbc8-000008c26a00 
+on database directory memory:D:\Eclipse-workspace\ms-search-api\b27989a8-7bcf-49c9-9ef9-307f89956c23 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@77556fd 
 Loaded from file:/C:/Users/Hal/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=11.0.9+7-LTS
@@ -11,3 +11,22 @@ os.arch=amd64
 os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Jan 05 20:17:46 CET 2021:
+Shutting down instance a816c00e-0176-d3f8-dbc8-000008c26a00 on database directory memory:D:\Eclipse-workspace\ms-search-api\b27989a8-7bcf-49c9-9ef9-307f89956c23 with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@77556fd 
+----------------------------------------------------------------
+Tue Jan 05 20:17:48 CET 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 247a40f2-0176-d3f8-dbc8-000008c26a00 
+on database directory memory:D:\Eclipse-workspace\ms-search-api\953aa908-4a7c-4ae2-aadd-e22da515bc2d with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@77556fd 
+Loaded from file:/C:/Users/Hal/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=11.0.9+7-LTS
+user.dir=D:\Eclipse-workspace\ms-search-api
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Jan 05 20:17:52 CET 2021:
+Shutting down instance 247a40f2-0176-d3f8-dbc8-000008c26a00 on database directory memory:D:\Eclipse-workspace\ms-search-api\953aa908-4a7c-4ae2-aadd-e22da515bc2d with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@77556fd 

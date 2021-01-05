@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.db.msapi.Model.Movie;
+import com.db.msapi.Model.MovieDetails;
 import com.db.msapi.Model.Show;
 import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.Model.ShowSeason;
@@ -55,14 +59,20 @@ public class ShowService {
 		}
 	
 	public Optional<Show> getShow(Long id){
-		return showRep.findById(id);
+		Optional<Show> show = showRep.findById(id);
+		if(show.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No TV Show found");
+		return show; 
 	}
 	
 	public ShowDetails getShowDetails(Long id) {
-		return showDetailsRep.findByShow_id(id);
+		ShowDetails showDet = showDetailsRep.findByShow_id(id);
+		if(showDet == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No TV Show details found");
+		return showDet;
 	}
 	
 	public List<ShowSeason> getShowSeasons(Long id){
-		return seasonRep.findByShowDetailsSesIdSDetails(id);
+		List<ShowSeason> seasons = seasonRep.findByShowDetailsSesIdSDetails(id);
+		if(seasons.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No TV Show seasons found");
+		return seasons;
 	}
 }
