@@ -13,6 +13,12 @@ import com.db.msapi.Model.ShowDetails;
 import com.db.msapi.response.themoviedb.*;
 import com.db.msapi.response.openmoviedb.*;
 
+/**
+* Main purpose of this class is to combine and convert 
+* all external API responses into database objects
+* 
+*/
+
 @Component
 public class ExternalApi {
 	
@@ -23,6 +29,12 @@ public class ExternalApi {
 	@Autowired
 	DataMapper movieDbMapper;
 	
+	
+	/**
+	 * <p>Use TheMovieDB API to get movie list response and convert response to database object Movie</p>
+	 * @param search term - title
+	 * @return list of movies 
+	 */
 	public List<Movie> getMoviesList(String str){
 		List<Movie> movies = new ArrayList<>();
 		MovieListResponse response = theMoviedbApi.getMoviesListResponse(str);
@@ -35,6 +47,12 @@ public class ExternalApi {
 		return movies;
 	}
 	
+	/**
+	 * <p>Use TheMovieDB API and openMoveDB to get movie details responses, 
+	 * merge responses and convert to database object MovieDetails </p>
+	 * @param TheMovieDB id
+	 * @return list of movies 
+	 */
 	public MovieDetails getMovieDetails(Long id) {
 		MovieResponseOmdb responseOpenMovieDatabase = new MovieResponseOmdb();
 		
@@ -45,6 +63,11 @@ public class ExternalApi {
 		return movieDbMapper.toMovieDetails(responseTheMovieDatabase , responseOpenMovieDatabase);
 	}
 	
+	/**
+	 * <p>Use TheMovieDB API to get TV show list response and convert response to database object Show</p>
+	 * @param search term - title
+	 * @return list of TV shows 
+	 */
 	public List<Show> getShowList(String str){
 		List<Show> shows = new ArrayList<>();
 		ShowListResponse response =  theMoviedbApi.getShowsListResponse(str);
@@ -56,6 +79,12 @@ public class ExternalApi {
 		}
 		return shows;
 	}
+	
+	/**
+	 * <p>Use TheMovieDB API to get TV show details response and convert response to database object ShowDetails</p>
+	 * @param TheMovieDB id
+	 * @return list of TV shows 
+	 */
 	public ShowDetails getShowDetails(Long id) {
 		ShowDetailsResponse responseTheMoviedb = theMoviedbApi.getShowDetailsResponse(id);
 		return movieDbMapper.toShowDetails(responseTheMoviedb);

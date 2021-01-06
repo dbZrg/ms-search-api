@@ -37,13 +37,22 @@ public class MediaService {
 	private LuceneSearch luceneSearch;
 	
 	
-
+	/**
+	 * <p>Get all movies and TV shows from database</p>
+	 * @return list of movies and TV shows
+	 */
 	public List<Media> getAllMedia(){
 		List<Media> list = new ArrayList<Media>();
 		mediaRep.findAll().forEach(list::add);
 		return list;
 	}
 	
+	/**
+	 * <p>Search for movie or TV show, if there is no exact match in database,
+	 * fetch movies and shows using external API-s and save to database</p>
+	 * @param str search term
+	 * @return list of Movie and Show objects sorted by relevance to search term
+	 */
 	public List<Media> searchAllMedia(String str){
 		
 		if(!movieRep.existsByName(str)) {

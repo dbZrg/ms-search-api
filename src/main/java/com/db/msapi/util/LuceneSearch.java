@@ -19,6 +19,12 @@ public class LuceneSearch {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
+	/**
+	 * <p>Get all T objects from database</p>
+	 * @param fetchNum number of hits allowed
+	 * @param clazz query class
+	 * @return list of all T objects in database 
+	 */
 	public <T> List<T> getAll(int fetchNum, Class<T> clazz){
 	
 		entityManager.clear();
@@ -32,6 +38,13 @@ public class LuceneSearch {
 		return hits.stream().distinct().collect(Collectors.toList());
 	}
 	
+	/**
+	 * <p>Find all T objects in database where name is closely matching search term</p>
+	 * @param str search term
+	 * @param fetchNum number of hits allowed
+	 * @param clazz query class
+	 * @return list of all T objects in database sorted by relevance to search term
+	 */
 	public <T> List<T> getByName(String str, int fetchNum, Class<T> clazz){
 		
 		entityManager.clear();

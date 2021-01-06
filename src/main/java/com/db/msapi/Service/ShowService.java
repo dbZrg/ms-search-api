@@ -31,12 +31,22 @@ public class ShowService {
 	@Autowired
 	private LuceneSearch luceneSearch;
 	
+	/**
+	 * <p>Get all TV shows from database</p>
+	 * @return list of Show objects 
+	 */
 	public List<Show> getAllShows(){
 		List<Show> list = new ArrayList<Show>();
 		showRep.findAll().forEach(list::add);
 		return list;
 	}
 	
+	/**
+	 * <p>Search for TV show, if there is no exact match in database,
+	 * fetch TV shows using external API-s and save to database</p>
+	 * @param str search term
+	 * @return list of Show objects sorted by relevance to search term
+	 */
 	public List<Show> getShowsByName(String str){
 		
 		if(!showRep.existsByName(str)) {
@@ -54,20 +64,35 @@ public class ShowService {
 			}
 		}	
 		return luceneSearch.getByName(str, 5000, Show.class);
-		}
+	}
 	
+	/**
+	 * <p>Get Show by id</p>
+	 * @param id TV show id
+	 * @return Show object 
+	 */
 	public Optional<Show> getShow(Long id){
 		Optional<Show> show = showRep.findById(id);
 		if(show.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No TV Show found");
 		return show; 
 	}
 	
+	/**
+	 * <p>Get ShowDetails by id</p>
+	 * @param id TV show id
+	 * @return ShowDetails object 
+	 */
 	public ShowDetails getShowDetails(Long id) {
 		ShowDetails showDet = showDetailsRep.findByShow_id(id);
 		if(showDet == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No TV Show details found");
 		return showDet;
 	}
 	
+	/**
+	 * <p>Get Seasons by ShowDetails id</p>
+	 * @param id ShowDetails id
+	 * @return List of ShowSeason objects 
+	 */
 	public List<ShowSeason> getShowSeasons(Long id){
 		List<ShowSeason> seasons = seasonRep.findByShowDetailsSesIdSDetails(id);
 		if(seasons.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No TV Show seasons found");

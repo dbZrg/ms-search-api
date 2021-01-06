@@ -4,6 +4,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import com.db.msapi.response.themoviedb.*;
 
+/**
+* TheMovieDB API calls 
+* 
+*/
+
 @Component
 public class TheMoviedbApi {
 	RestTemplate rest = new RestTemplate();

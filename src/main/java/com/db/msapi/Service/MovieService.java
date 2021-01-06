@@ -28,12 +28,22 @@ public class MovieService {
 	@Autowired
 	private LuceneSearch luceneSearch;
 	
+	/**
+	 * <p>Get all movies from database</p>
+	 * @return list of Movie objects 
+	 */
 	public List<Movie> getAllMovies(){
 		List<Movie> list = new ArrayList<Movie>();
 		movieRep.findAll().forEach(list::add);
 		return list;
 	}
 	
+	/**
+	 * <p>Search for movie, if there is no exact match in database,
+	 * fetch movies using external API-s and save to database</p>
+	 * @param str search term
+	 * @return list of Movie objects sorted by relevance to search term
+	 */
 	public List<Movie> getMoviesByName(String str){
 		if(!movieRep.existsByName(str)) {
 			for(Movie movie : externalApi.getMoviesList(str) ) {
@@ -47,12 +57,22 @@ public class MovieService {
 		return luceneSearch.getByName(str, 5000, Movie.class);	
 	}
 
+	/**
+	 * <p>Get Movie by id</p>
+	 * @param id movie id
+	 * @return Movie object 
+	 */
 	public Optional<Movie> getMovie(Long id){
 		Optional<Movie> movie = movieRep.findById(id);
 		if(movie.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Movie found");
 		return movie;
 	}
 	
+	/**
+	 * <p>Get Movie details by id</p>
+	 * @param id movie id
+	 * @return MovieDetails object 
+	 */
 	public MovieDetails getMovieDetails(Long id) {
 		MovieDetails movDet = movieDetailsRep.findByMovie_id(id);
 		if(movDet == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No Movie details found");

@@ -5,6 +5,11 @@ import org.springframework.web.client.RestTemplate;
 
 import com.db.msapi.response.openmoviedb.*;
 
+/**
+* OpenMovieDB API calls 
+* 
+*/
+
 @Component
 public class OpenMoviedbApi {
 	RestTemplate rest = new RestTemplate();
