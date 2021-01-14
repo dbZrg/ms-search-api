@@ -11,6 +11,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "movie_details")
 public class MovieDetails {
@@ -30,9 +37,7 @@ public class MovieDetails {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "movieDetails")
     private Movie movie;
 
-    public MovieDetails() {	
-    }
-	
+
 	public MovieDetails(String imdbId, Long revenue, String releaseDate, String writer, String director, String genres) {
 		super();
 		this.imdbId = imdbId;
@@ -42,61 +47,5 @@ public class MovieDetails {
 		this.director = director;
 		this.genres = genres;
 	}
-
-	public String getImdbId() {
-		return imdbId;
-	}
-
-	public void setImdbId(String imdbId) {
-		this.imdbId = imdbId;
-	}
-
-	public Long getIdMDetails() {
-		return idMDetails;
-	}
-
-	public Long getRevenue() {
-		return revenue;
-	}
-	
-	public void setRevenue(Long revenue) {
-		this.revenue = revenue;
-	}
-	
-	public String getReleaseDate() {
-		return releaseDate;
-	}
-	
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
-	public String getWriter() {
-		return writer;
-	}
-
-
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-
-
-	public String getDirector() {
-		return director;
-	}
-
-	public void setDirector(String director) {
-		this.director = director;
-	}
-
-	public String getGenres() {
-		return genres;
-	}
-
-	public void setGenres(String genres) {
-		this.genres = genres;
-	}
-    
-	
     
 }

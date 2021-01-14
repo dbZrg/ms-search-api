@@ -14,6 +14,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "show_details")
 public class ShowDetails {
@@ -33,8 +40,6 @@ public class ShowDetails {
 	@OneToMany(mappedBy = "showDetailsSes", fetch = FetchType.LAZY)
 	private List<ShowSeason> seasons = new ArrayList<>();
 	
-	public ShowDetails() {
-	}
 	
 	public ShowDetails(String imdbId, String firstAirDate, String lastAirDate, int numOfSeasons,
 			List<ShowSeason> seasons) {
@@ -46,51 +51,6 @@ public class ShowDetails {
 		this.seasons = seasons;
 	}
 
-
-	public Long getIdSDetails() {
-		return idSDetails;
-	}
-
-	public List<ShowSeason> getSeasons() {
-		return seasons;
-	}
-
-	public String getImdbId() {
-		return imdbId;
-	}
-
-	public void setImdbId(String imdbId) {
-		this.imdbId = imdbId;
-	}
-
-	public void setSeasons(List<ShowSeason> seasons) {
-		this.seasons = seasons;
-	}
-
-	public String getFirstAirDate() {
-		return firstAirDate;
-	}
-
-	public void setFirstAirDate(String firstAirDate) {
-		this.firstAirDate = firstAirDate;
-	}
-
-	public String getLastAirDate() {
-		return lastAirDate;
-	}
-
-	public void setLastAirDate(String lastAirDate) {
-		this.lastAirDate = lastAirDate;
-	}
-
-	public int getNumOfSeasons() {
-		return numOfSeasons;
-	}
-
-	public void setNumOfSeasons(int numOfSeasons) {
-		this.numOfSeasons = numOfSeasons;
-	}
-	
 	
 	
 }

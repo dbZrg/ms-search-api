@@ -9,6 +9,13 @@ import javax.persistence.OneToOne;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.IndexedEmbedded;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
 @Indexed
 @Entity
 @DiscriminatorValue("show")
@@ -19,20 +26,11 @@ public class Show extends Media {
 	@JoinColumn(name ="sdetails_id" , referencedColumnName = "idSDetails")
 	private ShowDetails showDetails;
 	
-	public Show() {
-	}
-	
+
 	public Show(long mdbId, String name, String description, String image_path, String language, Integer rating) {
 		super(mdbId, name, description, image_path, language, rating);
 	}
 
-	public ShowDetails getShowDetails() {
-		return showDetails;
-	}
-
-	public void setShowDetails(ShowDetails showDetails) {
-		this.showDetails = showDetails;
-	}
 	
 	
 	

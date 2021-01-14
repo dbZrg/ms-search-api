@@ -14,6 +14,13 @@ import org.hibernate.search.mapper.pojo.mapping.definition.annotation.FullTextFi
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.GenericField;
 import org.hibernate.search.mapper.pojo.mapping.definition.annotation.Indexed;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
 @Indexed
 @Entity(name="media_e")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -38,9 +45,7 @@ public abstract class Media {
 	private Integer rating;
 	@Column(insertable=false, updatable=false)
 	private String media_type;
-	
-	protected Media() {
-	}
+
 	
 	protected Media(Long mdbId, String name, String description, String image_path, String language, Integer rating) {
 		this.mdbId = mdbId;
@@ -52,50 +57,5 @@ public abstract class Media {
 	}
 	
 	
-	public long getMdbId() {
-		return mdbId;
-	}
-	public void setMdbId(long mdbId) {
-		this.mdbId = mdbId;
-	}
-	public long getId() {
-		return id;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getImage_path() {
-		return image_path;
-	}
-	public void setImage_path(String image_path) {
-		this.image_path = image_path;
-	}
-	public String getLanguage() {
-		return language;
-	}
-	public void setLanguage(String language) {
-		this.language = language;
-	}
-	public Integer getRating() {
-		return rating;
-	}
-	public void setRating(Integer rating) {
-		this.rating = rating;
-	}
-
-	public String getMedia_type() {
-		return media_type;
-	}
-
-
 	
 }

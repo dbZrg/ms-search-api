@@ -9,6 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name="tv_seasons")
 public class ShowSeason {
@@ -23,9 +30,7 @@ public class ShowSeason {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "showdetails_id",referencedColumnName = "idSDetails")
 	private ShowDetails showDetailsSes;
-	
-	public ShowSeason() {
-	}
+
 
 	public ShowSeason(String name, String airDate, Integer episodeCount) {
 		super();
@@ -34,40 +39,7 @@ public class ShowSeason {
 		this.episodeCount = episodeCount;
 	}
 	
-	public long getSeasonId() {
-		return seasonId;
-	}
 
-	public void setShowDetails(ShowDetails showDetails) {
-		this.showDetailsSes = showDetails;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAirDate() {
-		return airDate;
-	}
-
-	public void setAirDate(String airDate) {
-		this.airDate = airDate;
-	}
-
-	public Integer getEpisodeCount() {
-		return episodeCount;
-	}
-
-	public void setEpisodeCount(Integer episodeCount) {
-		this.episodeCount = episodeCount;
-	}
-
-	
-	
 	
 	
 }

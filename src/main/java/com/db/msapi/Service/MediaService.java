@@ -71,7 +71,7 @@ public class MediaService {
 				ShowDetails showDet = externalApi.getShowDetails(show.getMdbId());		
 				showDetailsRep.save(showDet);
 				for(ShowSeason season: showDet.getSeasons()) {
-					season.setShowDetails(showDet);
+					season.setShowDetailsSes(showDet);
 					seasonRep.save(season);
 				}
 				show.setShowDetails(showDet);
